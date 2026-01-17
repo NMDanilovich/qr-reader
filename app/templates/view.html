@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деньрожденские конкурсы</title>
+    <link rel="stylesheet" href="static/styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Деньрожденские конкурсы</h1>
+            <p class="subtitle">С днем рождения Олечка!</p>
+        </header>
+
+        <div class="app-content">
+            <div class="counter-section">
+                <h1>Топ гениев</h1>
+                <div class="image-container" id="99991">
+                    <img src="assets/PIC_1.jpg" alt="корги">
+                    <p>0</p>
+                </div>   
+
+                <div class="image-container" id="99992">
+                    <img src="assets/PIC_2.jpg" alt="попугай">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99993">
+                    <img src="assets/PIC_3.jpg" alt="кролик">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99994">
+                    <img src="assets/PIC_4.jpg" alt="олень">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99995">
+                    <img src="assets/PIC_5.jpg" alt="крокодил">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99996">
+                    <img src="assets/PIC_6.jpg" alt="пингвин">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99999">
+                    <img src="assets/PIC_7.jpg" alt="единорог">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99998">
+                    <img src="assets/PIC_8.jpg" alt="сова">
+                    <p>0</p>
+                </div>  
+
+                <div class="image-container" id="99997">
+                    <img src="assets/PIC_9.jpg" alt="дракон">
+                    <p>0</p>
+                </div>
+            </div>
+
+            <div class="presentation-section">
+                <iframe 
+                    style="border: 1px solid rgb(191,150,254);" 
+                    width="800" 
+                    height="450" 
+                    src="https://embed.figma.com/deck/****&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    async function loadMessages() {
+        try {
+            const res = await fetch('/messages');
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            const data = await res.json();
+
+            // Reset all counters to 0 (optional but safe)
+            document.querySelectorAll('.image-container p').forEach(p => p.textContent = '0');
+
+            // Apply actual counts
+            for (const [id, count] of Object.entries(data.counts || {})) {
+                const container = document.getElementById(id);
+                if (container) {
+                    container.querySelector('p').textContent = count;
+                }
+            }
+        } catch (error) {
+            console.error("Error loading counts:", error);
+        }
+    }
+
+    loadMessages();
+    setInterval(loadMessages, 2000);
+
+</script>
+
+</html>

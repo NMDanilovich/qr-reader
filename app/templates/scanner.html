@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сканер QR-кодов</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    
+    <link rel="stylesheet" href="static/styles.css">
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📷 Сканер QR-кодов</h1>
+            <p class="subtitle">Просто наведите камеру на QR-код</p>
+        </header>
+        
+        <div class="app-content">
+            <div class="camera-section">
+                <div class="camera-container">
+                    <video id="video" autoplay playsinline></video>
+                    <div class="scan-overlay">
+                        <div class="scan-frame">
+                            <div class="scan-line"></div>
+                        </div>
+                    </div>
+                    <canvas id="canvas"></canvas>
+                </div>
+                
+                <div class="controls">
+                    <button id="scan-button" class="btn btn-scan">
+                        🔍 Сканирование
+                    </button>
+                    <button id="stop-button" class="btn btn-stop" disabled>
+                        ⏹️ Остановить камеру
+                    </button>
+                </div>
+                
+                <div id="status" class="status status-active">
+                    📹 Камера активна
+                </div>
+            </div>
+            
+            <div class="result-section">
+                <h2 class="result-title">Результат сканирования</h2>
+                <div class="result-container">
+                    <div id="result">
+                        <p class="empty-result">Здесь будет отображен результат сканирования QR-кода</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>Как использовать сканер QR-кодов:</h3>
+        <ol>
+            <li>Разрешите доступ к камере при запросе.</li>
+            <li>Нажмите "Начать сканирование".</li>
+            <li>Наведите камеру на QR-код так, чтобы он оказался в рамке.</li>
+            <li>Результат появится справа.</li>
+            <li>Для остановки камеры нажмите "Остановить камеру".</li>
+        </ol>
+    </div>
+    
+    <footer>
+        <p>Web-приложение для сканирования QR-кодов</p>
+    </footer>
+
+    <script src="static/scripts.js" defer></script>
+
+</body>
+</html>
