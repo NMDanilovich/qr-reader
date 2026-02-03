@@ -2,8 +2,6 @@ QR-reader
 ---
 This is a simple website designed to keep score for my wife's birthday contest. The idea was that for each ID there is a specific QR code and when scanned, the counter should be updated.
 
-## Propertys
-
 ## Using
 
 Install the poetry manager
